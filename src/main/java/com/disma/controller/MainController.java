@@ -29,7 +29,7 @@ public class MainController {
     @RequestMapping(value="/", produces=MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody String auth(HttpServletRequest request)
     {
-        String msg = authService.authenticate(request.getHeader("authorization"));
+        String msg = authService.authenticate(request.getHeader("Authorization"));
         
         if(msg=="Not64Encoded"){
             msg="False";
