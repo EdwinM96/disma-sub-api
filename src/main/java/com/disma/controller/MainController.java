@@ -26,6 +26,8 @@ public class MainController {
     @Autowired
     UsuarioService authService;
     
+    Logger logger = Logger.getLogger("Disma");
+    
     @RequestMapping(value="/", produces=MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody String auth(HttpServletRequest request)
     {

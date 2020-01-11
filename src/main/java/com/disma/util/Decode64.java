@@ -15,13 +15,16 @@ import java.util.logging.Logger;
  */
 public class Decode64 {
 
+    Logger logger = Logger.getLogger("Logger");
     public Decode64() {
     }
     
     public HashMap decode64(String credentials){
+        if(credentials.contains("Basic ")){
+            credentials = credentials.replace("Basic ","");
+        }
         byte[] decodedArray = Base64.getDecoder().decode(credentials);        
         String decodedString = new String(decodedArray);
-        Logger.getLogger("Logg").info(decodedString);
         try{
             String[] credentialsVector = decodedString.split(":");
             HashMap credentialsMap = new HashMap();
