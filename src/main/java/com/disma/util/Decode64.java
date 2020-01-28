@@ -20,8 +20,15 @@ public class Decode64 {
     }
     
     public HashMap decode64(String credentials){
-        if(credentials.contains("Basic ")){
-            credentials = credentials.replace("Basic ","");
+        if(credentials.contains("Bearer")){
+            credentials = credentials.replace("Bearer","");
+        }
+        if(credentials.contains("Basic")){
+            credentials = credentials.replace("Basic","");
+        }
+        //LA SIGUIENTE LINEA PODRÍA DAR ERROR!!!!
+        if(credentials.contains(" ")){
+            credentials = credentials.replaceAll(" ", "");
         }
         byte[] decodedArray = Base64.getDecoder().decode(credentials);        
         String decodedString = new String(decodedArray);
