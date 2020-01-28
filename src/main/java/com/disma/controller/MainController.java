@@ -32,7 +32,7 @@ public class MainController {
     public @ResponseBody String auth(HttpServletRequest request)
     {
         String msg = authService.authenticate(request.getHeader("Authorization"));
-        logger.info(msg);
+        logger.info("Returned message after authentication: "+msg);
         if(msg=="Not64Encoded"){
             msg="False";
         }
